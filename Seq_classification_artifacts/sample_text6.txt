@@ -1,1 +1,1 @@
-The new vaccine is not in the horizon until some times next year.
+{"text":"The new vaccine is not in the horizon until some times next year.", target:1}

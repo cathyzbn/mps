@@ -1,1 +1,1 @@
-it is a new virus that changed the world. 
+{"text":"it is a new virus that changed the world. ", target:1}

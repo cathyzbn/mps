@@ -1,1 +1,1 @@
-Do you know who is going to win the election?
+{"text":"Do you know who is going to win the election?", target:1}

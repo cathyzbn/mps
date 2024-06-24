@@ -27,26 +27,26 @@ image = (
         # "cd mps && mv BERTSeqClassification.mar /model_store",
     )
    
-    .copy_local_dir(".", ".")
+    .copy_local_dir("../mps", ".")
     .dockerfile_commands([
         # "FROM ubuntu:14.04",
         # 'RUN echo $\'#!/usr/bin/env sh\necho "hi"\nexec "$@"\' > /temp.sh',
-        "RUN chmod +x /entrypoint.sh",
-        "ENTRYPOINT [\"/entrypoint.sh\"]",
+        # "RUN chmod +x /entrypoint.sh",
+        # "ENTRYPOINT [\"/entrypoint.sh\"]",
     ])
 
 )
 
 app = App(f"test", image=image)
 
-@app.function(gpu="A10G")
+@app.function(gpu="L4")
 def start_mps():
     
     import subprocess
-    subprocess.run(["nvidia-smi"])
-    subprocess.run(["su",  "-"])
-    subprocess.run(["apt-get", "install", "sudo", "-y"])
-    subprocess.run(["sudo", "nvidia-smi", "-c", "3"])
+    # subprocess.run(["nvidia-smi"])
+    # subprocess.run(["su",  "-"])
+    # subprocess.run(["apt-get", "install", "sudo", "-y"])
+    # subprocess.run(["sudo", "nvidia-smi", "-c", "3"])
     # subprocess.run(["nvidia-cuda-mps-control", "-d"])
     # print("MPS started")
     # subprocess.run(["ls"])
@@ -62,11 +62,11 @@ def start_mps():
 
     # f = open("sample_text_captum_input.txt", "w")
     # f.write('{"text":"Bloomberg has decided to publish a new report on the global economy.", "target":1}')
-    # # full command: curl -X POST http://127.0.0.1:8080/predictions/my_tc -T sample_text_captum_input.txt
+    # # full command: curl -X POST http://127.0.0.1:8080/predictions/my_tc -T Seq_classification_artifacts/sample_text_captum_input.txt
     # subprocess.run(["curl", "-X", "POST", "http://127.0.0.1:8080/predictions/my_tc", "-T", "sample_text_captum_input.txt"])
 
 
-@app.function(gpu="T4")
+@app.function(gpu="L4")
 def stop_mps():
     import subprocess
 
@@ -88,4 +88,4 @@ def main():
     
     # print(submit_query.remote())
 
-    # print(stop_mps.remote())
+    print(stop_mps.remote())

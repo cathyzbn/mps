@@ -1,1 +1,1 @@
-Distance learning has become a norm so far for schooling.
+{"text":"Distance learning has become a norm so far for schooling.", target:1}
